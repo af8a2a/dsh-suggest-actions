@@ -1,0 +1,6 @@
+- insert:
+    - id: dsh-suggest-actions
+      name: 'dsh-suggest-actions'
+      config:
+        maxActions: 3
+        timeoutMs: 15000

@@ -1,0 +1,48 @@
+{
+  "name": "dsh-suggest-actions",
+  "version": "0.1.0",
+  "description": "Claude-style next-step suggestions under each assistant reply: a short question plus clickable action chips that send the message on click. · 助手回复下方的「下一步」建议卡：一句追问 + 可点击的动作胶囊，点一下即作为你的消息发出。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./client/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "client/client.js",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "dsh": ">=0.2.1-rc.3 <0.3.0-0",
+    "node": "^22.19 || >=24"
+  },
+  "scripts": {
+    "test": "node test/suggest.test.mjs && node test/route.test.mjs && node test/client.test.mjs && node test/install.test.mjs"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "suggestions",
+    "next-step",
+    "quick-actions",
+    "composer"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}
