@@ -34,14 +34,16 @@ The script registers this directory as a `link:` dependency of the profile throu
 
 Registering through pnpm is the part that matters: pnpm owns `node_modules` and deletes anything its lockfile does not list. A package merely copied into `node_modules` survives until the next `dsh plugin` operation, after which the app fails with `cannot resolve profile bundle`. `-Copy` still exists as an offline fallback and prints that warning.
 
-Manual equivalent:
+Manual equivalent (substitute this repository's checkout path):
 
 ```powershell
-dsh plugin --profile desktop add "link:E:/deepseek-harness/plugins/dsh-suggest-actions"
+dsh plugin --profile desktop add "link:E:/dsh-suggest-actions"
 # then add "dsh-suggest-actions" to the dsh.profile.bundles array in "<profile>/package.json"
 ```
 
 Restart DSH. The card appears under the next completed reply.
+
+The profile holds a symlink to this checkout, so plugin edits take effect on the next DSH restart — and moving or deleting this directory breaks the link until the install command above is re-run.
 
 ## Troubleshooting
 
